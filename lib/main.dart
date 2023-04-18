@@ -86,91 +86,31 @@ class ProfileWidget extends StatelessWidget {
 //Settings Widget
 class SettingsWidget extends StatefulWidget {
   const SettingsWidget({Key? key}) : super(key: key);
-@override
+
+  @override
   // ignore: library_private_types_in_public_api
   _SettingsWidgetState createState() => _SettingsWidgetState();
 }
 
-
 class _SettingsWidgetState extends State<SettingsWidget> {
-  bool _notificationEnabled = true;
-  int _selectedThemeIndex = 0;
-  double _fontScale = 1.0;
+  bool _switchValue = false;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Settings'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Notifications',
-              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8.0),
-            SwitchListTile(
-              title: const Text('Enable Notifications'),
-              value: _notificationEnabled,
-              onChanged: (value) {
-                setState(() {
-                  _notificationEnabled = value;
-                });
-              },
-            ),
-            const SizedBox(height: 16.0),
-            const Text(
-              'Appearance',
-              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8.0),
-            ListTile(
-              title: const Text('Theme'),
-              trailing: DropdownButton<int>(
-                value: _selectedThemeIndex,
-                items: const [
-                  DropdownMenuItem<int>(
-                    value: 0,
-                    child: Text('Light'),
-                  ),
-                  DropdownMenuItem<int>(
-                    value: 1,
-                    child: Text('Dark'),
-                  ),
-                ],
-                onChanged: (value) {
-                  setState(() {
-                    _selectedThemeIndex = value!;
-                  });
-                },
-              ),
-            ),
-            const SizedBox(height: 16.0),
-            const Text(
-              'Accessibility',
-              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8.0),
-            ListTile(
-              title: const Text('Font Scale'),
-              trailing: Slider(
-                value: _fontScale,
-                min: 0.5,
-                max: 2.0,
-                divisions: 6,
-                onChanged: (value) {
-                  setState(() {
-                    _fontScale = value;
-                  });
-                },
-              ),
-            ),
-          ],
-        ),
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text('Settings Widget'),
+          Switch(
+            value: _switchValue,
+            onChanged: (bool value) {
+              setState(() {
+                _switchValue = value;
+              });
+            },
+          ),
+        ],
       ),
     );
   }
