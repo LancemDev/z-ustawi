@@ -21,6 +21,7 @@ class _MyAppState extends State<MyApp> {
     const HomeWidget(),
     const ProfileWidget(),
     const SettingsWidget(),
+
   ];
   @override
   Widget build(BuildContext context) {
